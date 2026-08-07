@@ -106,7 +106,7 @@ Este mapa presenta a IP como el protocolo encargado del direccionamiento lógico
 
 | Diseño renderizado desde el archivo `.dot` | Mapa reproducido a mano |
 | :---: | :---: |
-| <img src="./imagenes/renderizadas/mapa-mental-ip-renderizado.png" alt="Mapa mental sobre IP renderizado desde Graphviz" width="450"> | <img src="./imagenes/hechas-a-mano/mapa-mental-ip-hecho-a-mano.png" alt="Mapa mental sobre IP elaborado a mano" width="450"> |
+| <img src="./imagenes/renderizadas/mapa-mental-ip-renderizado.png" alt="Mapa mental sobre IP renderizado desde Graphviz" width="450"> | <img src="./imagenes/hechas-a-mano/mapa-mental-ip-hecho-a-mano.jpg" alt="Mapa mental sobre IP elaborado a mano" width="450"> |
 | *Guía digital para distribuir los conceptos.* | *Evidencia final elaborada manualmente.* |
 
 ### Conceptos representados
