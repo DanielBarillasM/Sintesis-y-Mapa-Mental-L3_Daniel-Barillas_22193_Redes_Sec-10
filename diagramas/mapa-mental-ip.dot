@@ -1,0 +1,119 @@
+// Renderizar con: neato -Tpng mapa-mental-ip.dot -o mapa-mental-ip.png
+graph MapaMentalIP {
+  graph [
+    layout=neato,
+    inputscale=72,
+    overlap=false,
+    splines=curved,
+    outputorder=edgesfirst,
+    bgcolor="#FCFCFD",
+    pad=0.45,
+    margin=0.15,
+    size="16,10!",
+    ratio=fill,
+    fontname="Arial"
+  ];
+
+  node [
+    shape=box,
+    style="rounded,filled",
+    fontname="Arial",
+    fontsize=13,
+    color="#334155",
+    fontcolor="#1F2937",
+    penwidth=1.8,
+    margin="0.16,0.10",
+    pin=true
+  ];
+
+  edge [penwidth=4.2, color="#94A3B8"];
+
+  ip [
+    label="IP\nDireccionamiento lógico",
+    pos="576,360!",
+    shape=ellipse,
+    width=2.65,
+    height=1.18,
+    fontsize=22,
+    style=filled,
+    fillcolor="#17324D",
+    color="#17324D",
+    fontcolor="white",
+    penwidth=3
+  ];
+
+  subred [
+    label="1. SUBRED Y MÁSCARA",
+    pos="270,520!",
+    fontsize=16,
+    fillcolor="#23877B",
+    color="#23877B",
+    fontcolor="white",
+    width=2.65,
+    height=0.72
+  ];
+  s1 [label="SUBRED\nDivide una red grande\nen redes más pequeñas", pos="75,665!", fillcolor="#E5F5F2", color="#23877B"];
+  s2 [label="MÁSCARA\nSepara los bits de\nRED y HOST", pos="270,700!", fillcolor="#E5F5F2", color="#23877B"];
+  s3 [label="CIDR\n/n = cantidad de\nbits de red", pos="465,665!", fillcolor="#E5F5F2", color="#23877B"];
+  s4 [label="EJEMPLO\n192.168.1.10/24\nMáscara: 255.255.255.0", pos="80,445!", fillcolor="#E5F5F2", color="#23877B"];
+  s5 [label="HOSTS TRADICIONALES\n2^h - 2\nh = bits de host", pos="330,420!", fillcolor="#E5F5F2", color="#23877B"];
+
+  clases [
+    label="2. CLASES IPv4\nModelo histórico",
+    pos="882,520!",
+    fontsize=16,
+    fillcolor="#D97736",
+    color="#D97736",
+    fontcolor="white",
+    width=2.65,
+    height=0.82
+  ];
+  c1 [label="A  1-126  /8\nB  128-191  /16\nC  192-223  /24", pos="695,685!", fillcolor="#FFF1E6", color="#D97736"];
+  c2 [label="CLASE D\n224-239\nMulticast", pos="895,700!", fillcolor="#FFF1E6", color="#D97736"];
+  c3 [label="CLASE E\n240-255\nReservada / experimental", pos="1090,670!", fillcolor="#FFF1E6", color="#D97736"];
+  c4 [label="127.0.0.0/8\nLoopback\nEjemplo: 127.0.0.1", pos="760,430!", fillcolor="#FFF1E6", color="#D97736"];
+  c5 [label="ACTUALMENTE\nSe utiliza CIDR; las clases\nson una referencia histórica", pos="1045,430!", fillcolor="#FFF1E6", color="#D97736"];
+
+  alcance [
+    label="3. IP PÚBLICA\nvs. IP PRIVADA",
+    pos="270,195!",
+    fontsize=16,
+    fillcolor="#7652A8",
+    color="#7652A8",
+    fontcolor="white",
+    width=2.75,
+    height=0.88
+  ];
+  p1 [label="IP PÚBLICA\nAsignación global\nEnrutable en Internet", pos="75,305!", fillcolor="#F2ECFA", color="#7652A8"];
+  p2 [label="IP PRIVADA\nUso dentro de redes privadas\nInternet público no la enruta", pos="375,315!", fillcolor="#F2ECFA", color="#7652A8"];
+  p3 [label="RANGOS PRIVADOS\n10.0.0.0/8\n172.16.0.0/12\n192.168.0.0/16", pos="85,60!", fillcolor="#F2ECFA", color="#7652A8"];
+  p4 [label="SALIDA A INTERNET IPv4\nNormalmente mediante NAT", pos="385,70!", fillcolor="#F2ECFA", color="#7652A8"];
+
+  header [
+    label="4. ENCABEZADO IPv4",
+    pos="882,195!",
+    fontsize=16,
+    fillcolor="#C84F39",
+    color="#C84F39",
+    fontcolor="white",
+    width=2.75,
+    height=0.72
+  ];
+  h1 [label="TAMAÑO\n20 a 60 bytes", pos="675,75!", fillcolor="#FDEAE5", color="#C84F39"];
+  h2 [label="CONTROL\nVersión · IHL · DSCP/ECN\nLongitud total", pos="875,55!", fillcolor="#FDEAE5", color="#C84F39"];
+  h3 [label="FRAGMENTACIÓN\nIdentificación · Flags\nFragment Offset", pos="1080,75!", fillcolor="#FDEAE5", color="#C84F39"];
+  h4 [label="ENTREGA\nTTL · Protocolo\nChecksum", pos="1090,235!", fillcolor="#FDEAE5", color="#C84F39"];
+  h5 [label="DIRECCIONAMIENTO\nIP origen · IP destino\nOpciones y relleno", pos="1010,350!", fillcolor="#FDEAE5", color="#C84F39"];
+
+  ip -- subred [color="#23877B", penwidth=6.0];
+  subred -- {s1 s2 s3 s4 s5} [color="#55B6AA"];
+
+  ip -- clases [color="#D97736", penwidth=6.0];
+  clases -- {c1 c2 c3 c4 c5} [color="#E9A46F"];
+
+  ip -- alcance [color="#7652A8", penwidth=6.0];
+  alcance -- {p1 p2 p3 p4} [color="#A98BCB"];
+
+  ip -- header [color="#C84F39", penwidth=6.0];
+  header -- {h1 h2 h3 h4 h5} [color="#E48B78"];
+}

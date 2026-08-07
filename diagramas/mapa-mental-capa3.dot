@@ -1,0 +1,135 @@
+// Renderizar con: neato -Tpng mapa-mental-capa3.dot -o mapa-mental-capa3.png
+graph MapaMentalCapa3 {
+  graph [
+    layout=neato,
+    inputscale=72,
+    overlap=false,
+    splines=curved,
+    outputorder=edgesfirst,
+    bgcolor="#FCFCFD",
+    pad=0.45,
+    margin=0.15,
+    size="18,11!",
+    ratio=fill,
+    fontname="Arial"
+  ];
+
+  node [
+    shape=box,
+    style="rounded,filled",
+    fontname="Arial",
+    fontsize=13,
+    color="#334155",
+    fontcolor="#1F2937",
+    penwidth=1.8,
+    margin="0.16,0.10",
+    pin=true
+  ];
+
+  edge [penwidth=4.2, color="#94A3B8"];
+
+  capa3 [
+    label="CAPA 3 - RED\nEntrega paquetes entre redes",
+    pos="648,410!",
+    shape=ellipse,
+    width=3.15,
+    height=1.25,
+    fontsize=21,
+    style=filled,
+    fillcolor="#17324D",
+    color="#17324D",
+    fontcolor="white",
+    penwidth=3
+  ];
+
+  nat [
+    label="1. NAT",
+    pos="305,625!",
+    fontsize=17,
+    fillcolor="#D97736",
+    color="#D97736",
+    fontcolor="white",
+    width=2.15,
+    height=0.70
+  ];
+  n1 [label="FUNCIÓN\nTraduce IP privada ↔ pública\ny mantiene una tabla", pos="75,720!", fillcolor="#FFF1E6", color="#D97736"];
+  n2 [label="NAT ESTÁTICO\n1 IP privada = 1 IP pública", pos="270,760!", fillcolor="#FFF1E6", color="#D97736"];
+  n3 [label="NAT DINÁMICO\nUtiliza un pool\nde IP públicas", pos="470,735!", fillcolor="#FFF1E6", color="#D97736"];
+  n4 [label="PAT / OVERLOAD\nMuchos equipos → 1 IP pública\nSe distinguen por puertos", pos="120,575!", fillcolor="#FFF1E6", color="#D97736"];
+
+  versiones [
+    label="2. IPv4 vs. IPv6",
+    pos="990,625!",
+    fontsize=17,
+    fillcolor="#7652A8",
+    color="#7652A8",
+    fontcolor="white",
+    width=2.65,
+    height=0.70
+  ];
+  v4 [label="IPv4\n32 bits · decimal · 2^32\nEncabezado: 20-60 bytes\nChecksum · broadcast · NAT común", pos="815,735!", fillcolor="#F2ECFA", color="#7652A8"];
+  v6 [label="IPv6\n128 bits · hexadecimal · 2^128\nEncabezado fijo: 40 bytes\nSin checksum ni broadcast", pos="1080,750!", fillcolor="#F2ECFA", color="#7652A8"];
+  vf [label="FRAGMENTACIÓN\nIPv4: origen y routers\nIPv6: solamente el origen", pos="1220,590!", fillcolor="#F2ECFA", color="#7652A8"];
+  vh [label="TTL EN IPv6\nSe llama Hop Limit", pos="1030,520!", fillcolor="#F2ECFA", color="#7652A8"];
+
+  ttl [
+    label="3. TTL",
+    pos="235,330!",
+    fontsize=17,
+    fillcolor="#C84F39",
+    color="#C84F39",
+    fontcolor="white",
+    width=2.10,
+    height=0.70
+  ];
+  t1 [label="CADA ROUTER\nResta 1 al TTL", pos="70,445!", fillcolor="#FDEAE5", color="#C84F39"];
+  t2 [label="TTL = 0\nEl paquete se descarta", pos="70,305!", fillcolor="#FDEAE5", color="#C84F39"];
+  t3 [label="RESPUESTA\nICMP Time Exceeded", pos="230,190!", fillcolor="#FDEAE5", color="#C84F39"];
+  t4 [label="PROPÓSITO\nEvita bucles infinitos\nBase de traceroute", pos="410,295!", fillcolor="#FDEAE5", color="#C84F39"];
+
+  icmp [
+    label="4. ICMP",
+    pos="1065,330!",
+    fontsize=17,
+    fillcolor="#23877B",
+    color="#23877B",
+    fontcolor="white",
+    width=2.10,
+    height=0.70
+  ];
+  i1 [label="FUNCIÓN\nDiagnóstico y control\nde errores de red", pos="1225,445!", fillcolor="#E5F5F2", color="#23877B"];
+  i2 [label="PING\nEcho Request / Reply", pos="1230,305!", fillcolor="#E5F5F2", color="#23877B"];
+  i3 [label="DESTINATION\nUNREACHABLE", pos="1070,190!", fillcolor="#E5F5F2", color="#23877B"];
+  i4 [label="TIME EXCEEDED\nUtilizado por traceroute", pos="890,295!", fillcolor="#E5F5F2", color="#23877B"];
+
+  rutas [
+    label="5. RUTAS Y ENRUTAMIENTO",
+    pos="648,150!",
+    fontsize=17,
+    fillcolor="#356F95",
+    color="#356F95",
+    fontcolor="white",
+    width=3.25,
+    height=0.70
+  ];
+  r1 [label="TABLA DE RUTAS\nDestino · siguiente salto\nInterfaz · métrica", pos="180,45!", fillcolor="#E8F1F7", color="#356F95"];
+  r2 [label="ELECCIÓN\nPrefijo más largo\nLuego menor métrica", pos="410,35!", fillcolor="#E8F1F7", color="#356F95"];
+  r3 [label="RUTA POR DEFECTO\n0.0.0.0/0", pos="650,35!", fillcolor="#E8F1F7", color="#356F95"];
+  r4 [label="ESTÁTICO\nManual y predecible\nNo se adapta solo", pos="875,35!", fillcolor="#E8F1F7", color="#356F95"];
+  r5 [label="DINÁMICO\nIntercambia información\nSe adapta a cambios\nRIP · OSPF · BGP", pos="1110,50!", fillcolor="#E8F1F7", color="#356F95"];
+
+  capa3 -- nat [color="#D97736", penwidth=6.0];
+  nat -- {n1 n2 n3 n4} [color="#E9A46F"];
+
+  capa3 -- versiones [color="#7652A8", penwidth=6.0];
+  versiones -- {v4 v6 vf vh} [color="#A98BCB"];
+
+  capa3 -- ttl [color="#C84F39", penwidth=6.0];
+  ttl -- {t1 t2 t3 t4} [color="#E48B78"];
+
+  capa3 -- icmp [color="#23877B", penwidth=6.0];
+  icmp -- {i1 i2 i3 i4} [color="#55B6AA"];
+
+  capa3 -- rutas [color="#356F95", penwidth=6.0];
+  rutas -- {r1 r2 r3 r4 r5} [color="#72A4C3"];
+}
