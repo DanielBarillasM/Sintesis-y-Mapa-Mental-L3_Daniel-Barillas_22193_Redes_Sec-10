@@ -179,7 +179,7 @@ El uso inicial de archivos `.dot` permitió planificar la distribución de los c
 
 ---
 
-> ### Referencias APA 7.ª edición de la tarea de Redes: Síntesis y Mapa Mental L3
+> ### Referencias APA 7.ª edición
 
 Deering, S., & Hinden, R. (2017, julio). *Internet Protocol, version 6 (IPv6) specification* (RFC 8200). Internet Engineering Task Force. [https://datatracker.ietf.org/doc/html/rfc8200](https://datatracker.ietf.org/doc/html/rfc8200)
 
