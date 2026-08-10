@@ -50,19 +50,6 @@ El trabajo se desarrolló en las siguientes etapas:
 
 ---
 
-## Requisitos de la entrega
-
-- Elaborar **dos mapas mentales a mano**, preferentemente en papel.
-- Utilizar palabras clave, ramas, colores y conexiones fáciles de identificar.
-- Tomar fotografías claras, bien iluminadas y sin partes recortadas.
-- Conservar los archivos `.dot` empleados para planificar los mapas.
-- Incluir las imágenes renderizadas a partir de los archivos `.dot`.
-- Incluir las fotografías finales de los mapas elaborados a mano.
-- Mantener la estructura y los nombres de archivos indicados para evitar enlaces rotos.
-- Subir el `README.md`, los archivos fuente y todas las imágenes al repositorio de GitHub.
-
----
-
 ## Contenido de los mapas mentales
 
 | Evidencia | Tema central | Conceptos incluidos |
